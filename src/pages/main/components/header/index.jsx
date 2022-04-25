@@ -3,10 +3,11 @@ import * as S from "./style"
 import logo from "../../../assets/logo.svg"
 import {BiDoorOpen} from "react-icons/bi"
 import { Box, TextInput } from 'grommet'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 
 export default function Header({signin}) {
+  const navigate = useNavigate()
     const [search, setSearch] = useState("")
     const location = useLocation()
   return (
@@ -16,6 +17,7 @@ export default function Header({signin}) {
             <S.IconWrapper>
                 <BiDoorOpen onClick={() => {
                     signin("")
+                    navigate("/login")
                 }} />
             </S.IconWrapper>
         </S.Content>

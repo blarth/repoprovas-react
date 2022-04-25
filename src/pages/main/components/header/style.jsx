@@ -13,7 +13,7 @@ export const Container = styled(Box)`
 
 export const IconWrapper = styled(Box)`
     font-size: 36px;
-
+    cursor: pointer;
 `;
 
 export const Content = styled(Box)`

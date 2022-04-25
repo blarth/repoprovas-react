@@ -19,8 +19,15 @@ async function login(user) {
 
 }
 
+async function getDisciplines(token) {
+  return await axios.get(`${REACT_APP_BASE_URL}/tests/disciplines`, createConfig(token));
+}
+async function getTeachers(token) {
+  return await axios.get(`${REACT_APP_BASE_URL}/tests/teachers`, createConfig(token));
+}
 
-const api = {createUser, login}
+
+const api = {createUser, login, getDisciplines, getTeachers}
 
 
 export default api

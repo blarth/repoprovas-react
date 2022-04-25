@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../assets/logo.svg";
 import * as S from "./style";
 import { LABELS } from "./labels";
 import { Hide, View } from "grommet-icons";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 import { Box, Button, Form, FormField, TextInput } from "grommet";
 import api from "../../services/api";
@@ -14,6 +15,7 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [reveal, setReveal] = useState(false);
+  const {auth} = useAuth()
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -30,6 +32,12 @@ export default function SignUp() {
       console.log(error);
     }
   }
+
+  useEffect(() => {
+    if(auth) navigate("/homepage/disciplines")
+  
+  }, [])
+  
 
   return (
     <S.Container>

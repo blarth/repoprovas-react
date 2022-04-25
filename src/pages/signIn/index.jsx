@@ -27,14 +27,14 @@ export default function SignIn() {
        
        signin(data.token)
 
-       navigate("/disciplines")
+       navigate("/homepage/disciplines")
     } catch (error) {
       console.log(error);
     }
   }
 
   useEffect(() => {
-    if(auth) navigate("/disciplines")
+    if(auth) navigate("/homepage/disciplines")
   }, [])
   
 

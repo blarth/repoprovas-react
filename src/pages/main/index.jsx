@@ -8,6 +8,7 @@ import { useLocation } from 'react-router-dom'
 import api from '../../services/api';
 import Disciplines from './components/disciplines';
 import Teachers from './components/teachers';
+import Discipline from './components/disciplines/discipline';
 
 
 export default function Main() {
@@ -32,13 +33,12 @@ export default function Main() {
       getData()
     }, []);
     
-    console.log(dataTeachers)
     return (
       <>
         <S.Container>
-          <Header signin={signin}/>
+          <Header signin={signin} auth={auth} setDataDisciplines={setDataDisciplines} setDataTeachers={setDataTeachers} getData={getData}/>
           <S.Content>
-            {location.pathname === "/homepage/disciplines" ? <Button primary label="Disciplines"></Button> : <Link to="/homepage/disciplines"><Button secundary label="Disciplines"></Button> </Link>}
+            {location.pathname === "/homepage/disciplines" ? <Button primary label="Disciplines"></Button> : <Link to="/homepage/disciplines"><Button secundary label="Disciplines" onClick={getData}></Button> </Link>}
             {location.pathname === "/homepage/teachers" ? <Button primary label="Teachers"></Button>  : <Link to="/homepage/teachers"><Button secundary label="Teachers"></Button> </Link>}
             <Button secundary label="Add"></Button>      
           </S.Content>
@@ -47,9 +47,10 @@ export default function Main() {
 
             {location.pathname === "/homepage/disciplines" ? dataDisciplines?.map((data) => {
               return <Disciplines {...data} ></Disciplines>
-            }) : dataTeachers?.map((data) => {
+            }) : location.pathname === "/homepage/teachers" ? dataTeachers?.map((data) => {
               return <Teachers {...data}></Teachers>
-            })}
+            }) : dataDisciplines?.map((data) => {
+              return <Discipline {...data} ></Discipline>})}
           </Accordion>
 
           

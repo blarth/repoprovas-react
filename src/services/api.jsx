@@ -22,12 +22,18 @@ async function login(user) {
 async function getDisciplines(token) {
   return await axios.get(`${REACT_APP_BASE_URL}/tests/disciplines`, createConfig(token));
 }
+async function getDisciplinesByName(token, searchBarText) {
+  return await axios.get(`${REACT_APP_BASE_URL}/tests/disciplines/${searchBarText}`, createConfig(token));
+}
 async function getTeachers(token) {
   return await axios.get(`${REACT_APP_BASE_URL}/tests/teachers`, createConfig(token));
 }
+async function getTeachersByName(token, searchBarText) {
+  return await axios.get(`${REACT_APP_BASE_URL}/tests/teachers/${searchBarText}`, createConfig(token));
+}
 
 
-const api = {createUser, login, getDisciplines, getTeachers}
+const api = {createUser, login, getDisciplines, getTeachers, getDisciplinesByName, getTeachersByName}
 
 
 export default api

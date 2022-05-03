@@ -10,6 +10,7 @@ function Pages() {
           <Route path="/login" element={<SignIn />}/>
           <Route path="/" element={<SignUp />}/>
           <Route path="/homepage/:path" element={<Main />} />
+          <Route path="/homepage/disciplines/:name" element={<Main />} />
       </Routes>
   );
 }
